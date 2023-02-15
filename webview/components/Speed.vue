@@ -39,6 +39,10 @@ export default defineComponent({
             type: Number,
             required: true,
         },
+        isMetric: {
+          type: [Boolean, Number],
+          required: false,
+        }
     },
     computed: {
         getSpeed(): Array<string> {
