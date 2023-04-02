@@ -1,19 +1,19 @@
 import * as alt from 'alt-client';
-import * as AthenaClient from '@AthenaClient/api';
+import * as native from 'natives';
 import { HUD_COMPONENT } from '@AthenaShared/enums/hudComponents';
 import { SYSTEM_EVENTS } from '@AthenaShared/enums/system';
-import { VEHICLE_STATE } from '@AthenaShared/enums/vehicle';
+//import { VEHICLE_STATE } from '@AthenaShared/enums/vehicle';
 import IClientInteraction from '@AthenaShared/interfaces/iClientInteraction';
 import IHudComponent from '@AthenaShared/interfaces/iHudComponent';
 import { PLAYER_SYNCED_META } from '@AthenaShared/enums/playerSynced';
-import { WebViewController } from '@AthenaClient/extensions/view2';
+import { WebViewController } from '@AthenaClient/webview';
 import ViewModel from '@AthenaClient/models/viewModel';
 import { InteractionController } from '@AthenaClient/systems/interaction';
-import { World } from '@AthenaClient/systems/world';
-import { AthenaClient } from '@AthenaClient/api/athena';
-import { KeybindController } from '@AthenaClient/events/keyup';
-import { isAnyMenuOpen } from '@AthenaClient/utility/menus';
-import { KeyHeld } from '@AthenaClient/events/keyHeld';
+import { World } from '@AthenaClient/world';
+import { AthenaClient } from '@AthenaClient/api';
+import { KeybindController } from '@AthenaClient/interface/hotkeys';
+import { isAnyMenuOpen } from '@AthenaClient/webview';
+import { KeyHeld } from '@AthenaClient/interface/hotkeys';
 import { VehicleData } from '../../../shared/information/vehicles';
 import { isVehicleType, VEHICLE_TYPE } from '../../../shared/enums/vehicleTypeFlags';
 import { SHARED_CONFIG } from '@AthenaShared/configurations/shared';
@@ -239,7 +239,7 @@ class InternalFunctions implements ViewModel {
 
         if (
             SHARED_CONFIG.ENABLE_KNOTS_FOR_BOATS_AND_AIRCRAFT &&
-            (isVehicleType(data.type, VEHICLE_TYPE.AIRCRAFT) || isVehicleType(data.type, VEHICLE_TYPE.BOAT))
+            (isVehicleType(data.type, VEHICLE_TYPE.PLANE) ||isVehicleType(data.type, VEHICLE_TYPE.HELI) || isVehicleType(data.type, VEHICLE_TYPE.BOAT))
         ) {
             speedCalc = (currentSpeed * 1.943844).toFixed(0);
         } else {
@@ -267,7 +267,7 @@ class InternalFunctions implements ViewModel {
 
         if (
             SHARED_CONFIG.ENABLE_KNOTS_FOR_BOATS_AND_AIRCRAFT &&
-            (isVehicleType(data.type, VEHICLE_TYPE.AIRCRAFT) || isVehicleType(data.type, VEHICLE_TYPE.BOAT))
+            (isVehicleType(data.type, VEHICLE_TYPE.PLANE) ||isVehicleType(data.type, VEHICLE_TYPE.HELI) || isVehicleType(data.type, VEHICLE_TYPE.BOAT))
         ) {
             unit = 'kn';
         } else {
