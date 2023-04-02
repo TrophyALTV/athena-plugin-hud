@@ -1,5 +1,5 @@
 import * as alt from 'alt-client';
-import * as native from 'natives';
+import * as AthenaClient from '@AthenaClient/api';
 import { HUD_COMPONENT } from '@AthenaShared/enums/hudComponents';
 import { SYSTEM_EVENTS } from '@AthenaShared/enums/system';
 import { VEHICLE_STATE } from '@AthenaShared/enums/vehicle';
